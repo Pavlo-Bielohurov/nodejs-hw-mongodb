@@ -39,6 +39,4 @@ contactsShema.post('save', handleSaveError);
 contactsShema.post('findOneAndUpdate', setUpdateSettings);
 contactsShema.pre('findOneAndUpdate', setUpdateSettings);
 
-export const sortByList = ['work', 'home', 'personal'];
-
 export const ContactsCollection = model('contacts', contactsShema);
