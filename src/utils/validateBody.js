@@ -1,16 +1,13 @@
 import createHttpError from 'http-errors';
 
-const validateBody = (shema) => {
-  const func = (req, res, next) => {
-    const { error } = shema.validate(req.body, {
+export const validateBody = (schema) => async (req, res, next) => {
+  try {
+    await schema.validateAsync(req.body, {
       abortEarly: false,
     });
-    if (error) {
-      throw createHttpError(400, error.message);
-    }
     next();
-  };
-
-  return func;
+  } catch (err) {
+    const error = createHttpError(400, 'Bad request', { errors: err.details });
+    next(error);
+  }
 };
-export default validateBody;
