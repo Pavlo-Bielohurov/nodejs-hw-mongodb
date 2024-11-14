@@ -6,9 +6,6 @@ import {
   updateContact,
   deleteContact,
 } from '../services/contacts.js';
-
-import { contactAddShema } from '../validation/contact.js';
-
 import { parseSortParams } from '../utils/parseSortParams.js';
 
 import { parsePaginationParams } from '../utils/parsPaginationParams.js';
@@ -40,14 +37,6 @@ export const getContactsByIdController = async (req, res, next) => {
 };
 
 export const addContactController = async (req, res) => {
-  const { error } = contactAddShema.validate(req.body, {
-    abortEarly: false,
-  });
-
-  if (error) {
-    throw createHttpError(400, error.message);
-  }
-
   const data = await addContact(req.body);
 
   res.status(201).json({
