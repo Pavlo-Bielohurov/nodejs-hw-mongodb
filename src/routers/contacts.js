@@ -12,12 +12,15 @@ import {
 import ctrlWrapper from '../utils/ctrlWrapper.js';
 import { validateBody } from '../utils/validateBody.js';
 import { isValideId } from '../middlewares/isValideId.js';
+import { authenticate } from '../middlewares/authenticate.js';
 import {
   CreateContactSchema,
   UpdateContactSchema,
 } from '../validation/contact.js';
 
 const contactsRouter = Router();
+
+contactsRouter.use(authenticate);
 
 contactsRouter.get('/contacts', ctrlWrapper(getAllContactsController));
 

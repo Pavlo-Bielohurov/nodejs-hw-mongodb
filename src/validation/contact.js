@@ -39,6 +39,7 @@ export const CreateContactSchema = Joi.object({
     .messages({
       'any.only': `Contact type must be one of ${contactType.join(', ')}`
     }),
+    parentId: Joi.string().required(),
 });
 
 export const UpdateContactSchema = Joi.object({
