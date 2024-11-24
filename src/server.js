@@ -9,6 +9,7 @@ import router from './routers/index.js';
 import { notFaundHandler } from './middlewares/notFaundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import { logger } from './middlewares/logger.js';
+import { UPLOAD_DIR } from './constants/index.js';
 
 export const setupServer = () => {
   const app = express();
@@ -19,8 +20,8 @@ export const setupServer = () => {
   app.use(cors());
   app.use(cookieParser());
 
-
   app.use(logger);
+  app.use('/uploads', express.static(UPLOAD_DIR));
 
   app.use(router);
 
