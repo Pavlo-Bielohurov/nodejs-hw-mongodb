@@ -94,6 +94,7 @@ export const refreshUsersSession = async ({ sessionId, refreshToken }) => {
 };
 
 export const requestResetToken = async (email) => {
+  console.log('User found:', user);
   const user = await UserCollection.findOne({ email });
   if (!user) {
     throw createHttpError(404, 'User not found');
@@ -108,6 +109,7 @@ export const requestResetToken = async (email) => {
       expiresIn: '15m',
     },
   );
+  console.log('Generated reset token:', resetToken);
 
   const resetPasswordTemplatePath = path.join(
     TEMPLATES_DIR,

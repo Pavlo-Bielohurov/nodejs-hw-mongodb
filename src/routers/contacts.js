@@ -33,7 +33,6 @@ contactsRouter.get(
 
 contactsRouter.post(
   '/',
-  isValideId,
   upload.single('photo'),
   validateBody(CreateContactSchema),
   ctrlWrapper(addContactController),
