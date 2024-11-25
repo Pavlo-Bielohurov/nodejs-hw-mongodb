@@ -10,4 +10,4 @@ const booststrap = async () => {
   setupServer();
 };
 
-booststrap();
+void booststrap();
