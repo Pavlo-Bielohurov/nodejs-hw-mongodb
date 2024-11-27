@@ -50,7 +50,7 @@ contactsRouter.patch(
   isValideId,
   upload.single('photo'),
   validateBody(UpdateContactSchema),
-  patchContactController,
+  ctrlWrapper(patchContactController),
 );
 
 contactsRouter.delete('/:contactId', isValideId, deleteContactController);

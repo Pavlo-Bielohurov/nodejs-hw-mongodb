@@ -102,9 +102,8 @@ export const patchContactController = async (req, res, next) => {
     photoUrl = await saveFileToCloudinary(photo);
   }
 
-  const data = await updateContact(contactId, {
+  const data = await updateContact(contactId, userId, {
     ...req.body,
-    userId,
     photo: photoUrl,
   });
   if (!data) {
