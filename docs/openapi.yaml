@@ -12,8 +12,8 @@ tags:
   - name: Auth
     description: Auth operations.
 servers:
-  - url: http://localhost:3000
   - url: https://nodejs-hw-mongodb-fbax.onrender.com
+  - url: http://localhost:3000
 paths:
   /contacts:
     get:
@@ -23,6 +23,10 @@ paths:
   /contacts/{id}:
     get:
       $ref: ../swagger/paths/contacts/{id}/get.yaml
+    delete:
+      $ref: ../swagger/paths/contacts/{id}/delete.yaml
+    patch:
+      $ref: ../swagger/paths/contacts/{id}/patch.yaml
 components:
   securitySchemes:
     bearerAuth:
